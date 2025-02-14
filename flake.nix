@@ -1,8 +1,7 @@
-# Copyright (c) 2023 BirdeeHub
-# Licensed under the MIT license
 {
-  description = "A Lua-natic's neovim flake, with extra cats! nixCats!";
+  description = "My NixCats configuration";
 
+  # Flake inputs/dependencies
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixCats.url = "github:BirdeeHub/nixCats-nvim";
