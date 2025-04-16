@@ -1,10 +1,8 @@
--- NOTE: this just gives nixCats global command a default value
--- so that it doesnt throw an error if you didnt install via nix.
--- usage of both this setup and the nixCats command is optional,
--- but it is very useful for passing info from nix to lua so you will likely use it at least once.
-require('nixCatsUtils').setup {
-  non_nix_value = true,
-}
+-- Give NixCats's global command a default value
+-- So it doesn't throw an error if you didn't install via Nix
+-- Usage of both this setup and the NixCats command is optional
+-- But it's very useful for passing info from Nix to Lua so you'll likely use it atleast once
+require('nixCatsUtils').setup { non_nix_value = true }
 
 -- NOTE: You might want to move the lazy-lock.json file
 local function getlockfilepath()
@@ -40,13 +38,15 @@ require('nixCatsUtils.lazyCat').setup(nixCats.pawsible { 'allPlugins', 'start', 
       auto_install = require('nixCatsUtils').lazyAdd(true, false),
     },
   },
-  { 'folke/lazydev.nvim', ft = "lua",
+  {
+    'folke/lazydev.nvim',
+    ft = 'lua',
     opts = {
       library = {
         -- adds type hints for nixCats global, but LazyDev is just nice in general
-        { path = (nixCats.nixCatsPath or "") .. '/lua', words = { "nixCats" } },
+        { path = (nixCats.nixCatsPath or '') .. '/lua', words = { 'nixCats' } },
       },
-    }
+    },
   },
   -- import/override with your plugins
   { import = 'plugins' },
