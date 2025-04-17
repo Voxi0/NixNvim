@@ -24,4 +24,26 @@ return {
       terminal_text = 'Using The Terminal',
     },
   },
+
+  -- Reveal whitespace characters in visual mode like VSCode
+  {
+    'mcauley-penney/visual-whitespace.nvim',
+    event = 'ModeChanged *:[vV\22]',
+    opts = {
+      enabled = true,
+      highlight = { link = 'Visual' },
+      space_char = '·',
+      tab_char = '→',
+      unix_char = '↲',
+      mac_char = '←',
+      dos_char = '↙',
+      excluded = {
+        filetypes = {},
+        buftypes = {},
+      },
+    },
+    config = function()
+      vim.keymap.set({ 'n', 'v' }, '<leader>uv', require('visual-whitespace').toggle, {})
+    end,
+  },
 }
