@@ -5,13 +5,15 @@ vim.o.timeoutlen = 300
 -- Nice to have
 vim.opt.fillchars = { eob = ' ' } -- Set what character to display for empty lines
 vim.o.termguicolors = true -- Ensure that Neovim shows the "best" version of a colorscheme if the terminal supports it
-vim.o.mouse = 'a' -- Mouse mode
-vim.o.clipboard = 'unnamedplus' -- Clipboard
-vim.o.undofile = true -- Save undo history
 vim.o.spell = true -- Spell checking
 vim.o.wrap = false -- Don't wrap text around the screen horizontally
+vim.o.mouse = 'a' -- Mouse mode
+vim.o.clipboard = 'unnamedplus' -- Clipboard
+vim.o.completeopt = 'menu,preview,noselect' -- For a better completion experience
+vim.o.undofile = true -- Save undo history
 vim.o.breakindent = true -- Stops line wrapping from being confusing
-vim.opt.inccommand = 'split' -- Preview substitutions live, as you type!
+vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
+vim.opt.inccommand = 'split' -- Preview substitutions live as you type
 
 -- Highlight on search and enable case-insensitive searching UNLESS \C or capital in search
 vim.opt.hlsearch = true
@@ -32,9 +34,14 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- Indentation
+-- vim.o.smarttab = true
+-- vim.o.smartindent = true
+-- vim.o.autoindent = true
+-- vim.o.softtabstop = 4
 vim.o.expandtab = false
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+vim.opt.cpoptions:append 'I'
 
 -- Code folding
 vim.o.foldenable = true

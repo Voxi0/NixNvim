@@ -1,3 +1,4 @@
 require 'opts'
+require 'keymaps'
 require 'autocmds'
-require 'plugins.filetree'
+require('lze').load 'plugins'
