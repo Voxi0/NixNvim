@@ -32,8 +32,10 @@
 
       # Plugins loaded at startup
       startupPlugins.general = with pkgs.vimPlugins; [
+        lze lzextras
         nvim-web-devicons
         neo-tree-nvim
+        lualine-nvim
       ];
 
       # Plugins not automatically loaded at startup
