@@ -1,4 +1,5 @@
 {
+  # Description
   description = "Voxi0's NixCats config";
 
   # Dependencies
@@ -33,62 +34,70 @@
           ripgrep
           fd
           stdenv.cc.cc
-          lua-language-server
-          nil
-          stylua
+          lua-language-server   # Lua language server
+          nil                   # Nix language server
+          stylua                # Lua code formatter
         ];
       };
 
       # Plugins - Don't have to download everything via Nix
       startupPlugins = with pkgs.vimPlugins; {
         general = [
+          # Lazy.nvim plugin manager and LazyVim distro
           lazy-nvim LazyVim
-          bufferline-nvim
-          lazydev-nvim
-          cmp-buffer cmp-nvim-lsp cmp-path cmp_luasnip
-          conform-nvim
-          dashboard-nvim
-          dressing-nvim
-          flash-nvim
-          friendly-snippets
-          gitsigns-nvim
-          indent-blankline-nvim
-          lualine-nvim
-          neo-tree-nvim
-          neoconf-nvim
-          neodev-nvim
-          noice-nvim
-          nui-nvim
-          nvim-cmp
-          nvim-lint
+
+          vim-startuptime       # View Neovim startup event timing information
+
+          # Quality-of-Life (QoL) and utility plugins
+          neocord               # Discord rich presence
+          which-key-nvim        # Show avialable keybindings in a popup as you type
+          snacks-nvim           # Collection of small quality-of-life plugins for Neovim
+          vim-illuminate        # Highlight other uses of the word under the cursor
+          todo-comments-nvim    # Highlight, list and search todo comments in your projects
+
+          # UI
+          nvim-web-devicons     # Nerd font icons for use by Neovim plugins
+          tokyonight-nvim       # Tokyonight theme/colorscheme
+          noice-nvim            # Completely replaces the UI for messages, cmdline and the popup menu
+          nvim-notify nui-nvim  # Notification manager for Neovim
+          dashboard-nvim        # Fancy and blazingly fast start screen for Neovim
+          neo-tree-nvim         # Filetree
+          lualine-nvim          # Blazingly fast and easy to configure Neovim statusline written in Lua
+          bufferline-nvim       # Snazzy bufferline for Neovim
+          gitsigns-nvim         # Git integration for buffers
+          indent-blankline-nvim # Show indentation guides
+          flash-nvim            # Navigate your code with search labels, enhanced character motions and Treesitter integration
+
+          # LSP, autocompletion, formatting, snippets and debugging
+          lazydev-nvim          # Properly configures LuaLS for Neovim configuration
           nvim-lspconfig
-          nvim-notify
-          nvim-spectre
+          nvim-cmp
+          cmp-buffer
+          cmp-nvim-lsp
+          cmp-path
+          cmp_luasnip
+          conform-nvim
+          friendly-snippets
+          trouble-nvim
+
+          # Plugin to manage global and project-local settings
+          neoconf-nvim
+
+          nvim-lint
+          nvim-spectre          # Search panel for Neovim
+          persistence-nvim      # Simple session manager
+          plenary-nvim          # All the most used Lua code for Neovim
+
+          # Highly extendable fuzzy finder
+          telescope-nvim
+          telescope-fzf-native-nvim
+
+          # Syntax highlighting
+          nvim-treesitter.withAllGrammars
           nvim-treesitter-context
+          nvim-ts-context-commentstring
           nvim-treesitter-textobjects
           nvim-ts-autotag
-          nvim-ts-context-commentstring
-          nvim-web-devicons
-          persistence-nvim
-          plenary-nvim
-          telescope-fzf-native-nvim
-          telescope-nvim
-          todo-comments-nvim
-          tokyonight-nvim
-          trouble-nvim
-          vim-illuminate
-          vim-startuptime
-          which-key-nvim
-          snacks-nvim
-          nvim-treesitter-textobjects
-          nvim-treesitter.withAllGrammars
-          # This is for if you only want some of the grammars
-          # (nvim-treesitter.withPlugins (
-          #   plugins: with plugins; [
-          #     nix
-          #     lua
-          #   ]
-          # ))
 
           # Sometimes you have to fix the names
           { plugin = luasnip; name = "LuaSnip"; }
