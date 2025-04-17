@@ -46,30 +46,31 @@
           # Lazy.nvim plugin manager and LazyVim distro
           lazy-nvim LazyVim
 
-          vim-startuptime       # View Neovim startup event timing information
+          vim-startuptime         # View Neovim startup event timing information
 
           # Quality-of-Life (QoL) and utility plugins
-          neocord               # Discord rich presence
-          which-key-nvim        # Show avialable keybindings in a popup as you type
-          snacks-nvim           # Collection of small quality-of-life plugins for Neovim
-          vim-illuminate        # Highlight other uses of the word under the cursor
-          todo-comments-nvim    # Highlight, list and search todo comments in your projects
+          neocord                 # Discord rich presence
+          which-key-nvim          # Show avialable keybindings in a popup as you type
+          snacks-nvim             # Collection of small quality-of-life plugins for Neovim
+          vim-illuminate          # Highlight other uses of the word under the cursor
+          todo-comments-nvim      # Highlight, list and search todo comments in your projects
+          visual-whitespace-nvim  # Reveal whitespace characters in visual mode like VSCode
 
           # UI
-          nvim-web-devicons     # Nerd font icons for use by Neovim plugins
-          tokyonight-nvim       # Tokyonight theme/colorscheme
-          noice-nvim            # Completely replaces the UI for messages, cmdline and the popup menu
-          nvim-notify nui-nvim  # Notification manager for Neovim
-          dashboard-nvim        # Fancy and blazingly fast start screen for Neovim
-          neo-tree-nvim         # Filetree
-          lualine-nvim          # Blazingly fast and easy to configure Neovim statusline written in Lua
-          bufferline-nvim       # Snazzy bufferline for Neovim
-          gitsigns-nvim         # Git integration for buffers
-          indent-blankline-nvim # Show indentation guides
-          flash-nvim            # Navigate your code with search labels, enhanced character motions and Treesitter integration
+          nvim-web-devicons       # Nerd font icons for use by Neovim plugins
+          tokyonight-nvim         # Tokyonight theme/colorscheme
+          noice-nvim              # Completely replaces the UI for messages, cmdline and the popup menu
+          nvim-notify nui-nvim    # Notification manager for Neovim
+          dashboard-nvim          # Fancy and blazingly fast start screen for Neovim
+          neo-tree-nvim           # Filetree
+          lualine-nvim            # Blazingly fast and easy to configure Neovim statusline written in Lua
+          bufferline-nvim         # Snazzy bufferline for Neovim
+          gitsigns-nvim           # Git integration for buffers
+          indent-blankline-nvim   # Show indentation guides
+          flash-nvim              # Navigate your code with search labels, enhanced character motions and Treesitter integration
 
           # LSP, autocompletion, formatting, snippets and debugging
-          lazydev-nvim          # Properly configures LuaLS for Neovim configuration
+          lazydev-nvim            # Properly configures LuaLS for Neovim configuration
           nvim-lspconfig
           nvim-cmp
           cmp-buffer
@@ -84,9 +85,9 @@
           neoconf-nvim
 
           nvim-lint
-          nvim-spectre          # Search panel for Neovim
-          persistence-nvim      # Simple session manager
-          plenary-nvim          # All the most used Lua code for Neovim
+          nvim-spectre            # Search panel for Neovim
+          persistence-nvim        # Simple session manager
+          plenary-nvim            # All the most used Lua code for Neovim
 
           # Highly extendable fuzzy finder
           telescope-nvim
