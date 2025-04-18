@@ -28,14 +28,18 @@
 
       # LSP and runtime depedencies - Made available at runtime for plugins and LSPs
       # Will also be available to PATH in the Neovim terminal
-      lspsAndRuntimeDeps = {};
+      lspsAndRuntimeDeps.general = with pkgs; [ fd ];
 
       # Plugins loaded at startup
       startupPlugins.general = with pkgs.vimPlugins; [
-        lze lzextras
-        nvim-web-devicons
-        neo-tree-nvim
-        lualine-nvim
+        lze lzextras        # Lazy loading library
+        mini-nvim           # Library of 40+ independent Lua modules improving Neovim experience with minimal effort
+        snacks-nvim         # Collection of Quality-of-Life (QoL) plugins for Neovim
+        nvim-web-devicons   # Nerd font icons
+        noice-nvim          # Highly experimental plugin completely replacing the UI for messages, cmdline and popupmenu
+        nui-nvim            # UI component library for Neovim
+        nvim-notify         # Fancy and configurable notification manager
+        lualine-nvim        # Blazingly fast and easy to configure statusline written in Lua
       ];
 
       # Plugins not automatically loaded at startup
