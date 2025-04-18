@@ -1,7 +1,7 @@
 # NixNvim
 <p align="center">
-    <img src="https://img.shields.io/github/license/Voxi0/NvimDots?style=flat-square&logo=Github&label=License&labelColor=black&color=white" alt="License">
-    <img src="https://img.shields.io/github/languages/code-size/Voxi0/NvimDots?style=flat-square&logo=Files&label=Size&labelColor=black&color=white" alt="Repo Size">
+    <img src="https://img.shields.io/github/license/Voxi0/NixNvim?style=flat-square&logo=Github&label=License&labelColor=black&color=white" alt="License">
+    <img src="https://img.shields.io/github/languages/code-size/Voxi0/NixNvim?style=flat-square&logo=Files&label=Size&labelColor=black&color=white" alt="Repo Size">
 </p>
 
 This is my Neovim configuration using [nixCats](https://github.com/BirdeeHub/nixCats-nvim). Nix handles installing everything e.g. plugins while Lua is for configuring.
