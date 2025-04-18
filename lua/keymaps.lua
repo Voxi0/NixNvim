@@ -19,9 +19,9 @@ map('i', '<C-e>', '<End>', { desc = 'Move to the end of the line' })
 map('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Moves Line Down' })
 map('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Moves Line Up' })
 
--- Toggle line numbers and realtive line numbers
+-- Toggle absolute and relative line numbers
 map('n', '<leader>n', '<CMD>set nu!<CR>', { desc = 'Toggle absolute line numbers' })
-map('n', '<leader>nr', '<CMD>set rnu!<CR>', { desc = 'Toggle relative line numbers' })
+map('n', '<leader>rn', '<CMD>set rnu!<CR>', { desc = 'Toggle relative line numbers' })
 
 -- Buffer controls
 map('n', '<leader>bn', '<CMD>bn<CR>', { desc = 'Goto next buffer' })

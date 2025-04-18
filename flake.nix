@@ -28,27 +28,42 @@
 
       # LSP and runtime depedencies - Made available at runtime for plugins and LSPs
       # Will also be available to PATH in the Neovim terminal
-      lspsAndRuntimeDeps.general = with pkgs; [ fd ];
+      lspsAndRuntimeDeps.core = with pkgs; [ fd ripgrep gcc ];
 
       # Plugins loaded at startup
-      startupPlugins.general = with pkgs.vimPlugins; [
-        lze lzextras        # Lazy loading library
-        which-key-nvim      # Shows available keybindings in a popup as you type to help you remember them
-        mini-nvim           # Library of 40+ independent Lua modules improving Neovim experience with minimal effort
-        snacks-nvim         # Collection of Quality-of-Life (QoL) plugins for Neovim
-        nvim-web-devicons   # Nerd font icons
-        noice-nvim          # Highly experimental plugin completely replacing the UI for messages, cmdline and popupmenu
-        nui-nvim            # UI component library for Neovim
-        nvim-notify         # Fancy and configurable notification manager
-        lualine-nvim        # Blazingly fast and easy to configure statusline written in Lua
-      ];
+      startupPlugins = {
+        # Very useful/handy plugins - Borderline necessary
+        core = with pkgs.vimPlugins; [
+          lze lzextras        # Lazy loading library
+          which-key-nvim      # Shows available keybindings in a popup as you type to help you remember them
+          mini-nvim           # Library of 40+ independent Lua modules improving Neovim experience with minimal effort
+          snacks-nvim         # Collection of Quality-of-Life (QoL) plugins for Neovim
+
+          # Treesitter - Syntax highlighting
+          nvim-treesitter.withAllGrammars
+        ];
+
+        # Kewl UI plugins
+        ui = with pkgs.vimPlugins; [
+          nvim-web-devicons   # Nerd font icons
+          lualine-nvim        # Blazingly fast and easy to configure statusline written in Lua
+          fidget-nvim         # Extensible UI for notifications and LSP progress messages
+        ];
+
+        # Themes
+        themer = with pkgs.vimPlugins; (builtins.getAttr (categories.colorscheme or "catppuccin") {
+          "catppuccin" = catppuccin-nvim;
+          "rose-pine" = rose-pine;
+          "onedark" = onedark-nvim;
+        });
+      };
 
       # Plugins not automatically loaded at startup
       # Use with packadd and an autocommand in config to achieve lazy loading
-      optionalPlugins.general = with pkgs.vimPlugins; [];
+      optionalPlugins.core = with pkgs.vimPlugins; [];
 
       # Shared libraries to add to `LD_LIBRARY_PATH` available to Neovim runtime
-      sharedLibraries.general = with pkgs; [];
+      sharedLibraries.core = with pkgs; [];
 
       # Environment variables made available at runtime for plugins and to PATH in the Neovim terminal
       environmentVariables = {};
@@ -83,7 +98,12 @@
         };
 
         # Enabled categories
-        categories.general = true;
+        categories = {
+          core = true;
+          ui = true;
+          themer = true;
+          colorscheme = "catppuccin";
+        };
       };
     };
 
