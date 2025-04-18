@@ -33,6 +33,7 @@
       # Plugins loaded at startup
       startupPlugins.general = with pkgs.vimPlugins; [
         lze lzextras        # Lazy loading library
+        which-key-nvim      # Shows available keybindings in a popup as you type to help you remember them
         mini-nvim           # Library of 40+ independent Lua modules improving Neovim experience with minimal effort
         snacks-nvim         # Collection of Quality-of-Life (QoL) plugins for Neovim
         nvim-web-devicons   # Nerd font icons
