@@ -1,4 +1,7 @@
 return {
+  { 'noice.nvim', after = require('noice').setup() }, -- Experimental plugin completely replacing the UI
+  { 'lualine.nvim', after = require('lualine').setup {} }, -- Fast and easy to use/configure statusline
+
   -- Library of 40+ independent Lua modules improving Neovim experience with minimal effort
   {
     'mini.nvim',
@@ -23,6 +26,7 @@ return {
   {
     'snacks.nvim',
     lazy = false,
+    after = require('snacks').setup(),
     keys = {
       -- Toggle filetree explorer
       {
@@ -64,39 +68,5 @@ return {
         end,
       },
     },
-    after = function()
-      require('snacks').setup {
-        -- Kewl dashboard
-        -- dashboard = {
-        --   enabled = true,
-        --   sections = {
-        --     { section = 'header' },
-        --     { section = 'keys', gap = 1, padding = 1 },
-        --     { section = 'startup' },
-        --   },
-        -- },
-      }
-    end,
-  },
-
-  -- Highly experimental plugin completely replacing the UI for messages, cmdline and popupmenu
-  {
-    'noice.nvim',
-    after = function()
-      require('noice').setup()
-    end,
-  },
-
-  -- Blazingly fast and easy to configure Neovim statusline written in pure Lua
-  {
-    'lualine.nvim',
-    after = function()
-      require('lualine').setup {
-        options = {
-          icons_enabled = true,
-          theme = 'auto',
-        },
-      }
-    end,
   },
 }
