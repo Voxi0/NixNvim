@@ -1,52 +1,56 @@
 -- #############
 -- ## GLOBALS ##
 -- #############
+local g = vim.g
+
 -- Disable the default Neovim file explorer (REQUIRED) - We'll use something else
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+g.loaded_netrw = 1
+g.loaded_netrwPlugin = 1
 
 -- #############
 -- ## OPTIONS ##
 -- #############
+local o = vim.opt
+
 -- Decrease update time for performance
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+o.updatetime = 250
+o.timeoutlen = 300
 
 -- Nice to have
-vim.opt.fillchars = { eob = ' ' } -- Set what character to display for empty lines
-vim.opt.termguicolors = true -- Ensure that Neovim shows the "best" version of a colorscheme if the terminal supports it
-vim.opt.spell = true -- Spell checking
-vim.opt.wrap = false -- Don't wrap text around the screen horizontally
-vim.opt.mouse = 'a' -- Mouse mode
-vim.opt.clipboard = 'unnamedplus' -- Clipboard
-vim.opt.completeopt = 'menu,preview,noselect' -- For a better completion experience
-vim.opt.undofile = true -- Save undo history
-vim.opt.breakindent = true -- Stops line wrapping from being confusing
-vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
-vim.opt.inccommand = 'split' -- Preview substitutions live as you type
+o.fillchars = { eob = " " } -- Set what character to display for empty lines
+o.termguicolors = true -- Ensure that Neovim shows the "best" version of a colorscheme if the terminal supports it
+o.spell = true -- Spell checking
+o.wrap = false -- Don't wrap text around the screen horizontally
+o.mouse = "a" -- Mouse mode
+o.clipboard = "unnamedplus" -- Clipboard
+o.completeopt = "menu,preview,noselect" -- For a better completion experience
+o.undofile = true -- Save undo history
+o.breakindent = true -- Stops line wrapping from being confusing
+o.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
+o.inccommand = "split" -- Preview substitutions live as you type
 
 -- Highlight on search and enable case-insensitive searching UNLESS \C or capital in search
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+o.hlsearch = true
+o.ignorecase = true
+o.smartcase = true
 
 -- Signcolumn and line numbers
-vim.opt.signcolumn = 'yes'
-vim.opt.number = true
-vim.opt.relativenumber = true
+o.signcolumn = "yes"
+o.number = true
+o.relativenumber = true
 
 -- Indentation
--- vim.opt.smarttab = true
--- vim.opt.smartindent = true
--- vim.opt.autoindent = true
--- vim.opt.softtabstop = 4
-vim.opt.expandtab = false
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
+-- o.smarttab = true
+-- o.smartindent = true
+-- o.autoindent = true
+-- o.softtabstop = 4
+o.expandtab = false
+o.tabstop = 2
+o.shiftwidth = 2
 
 -- Code folding
-vim.opt.foldenable = true
-vim.opt.foldcolumn = '0'
-vim.opt.foldtext = ''
-vim.opt.foldlevel = 99
-vim.opt.foldlevelstart = 99
+o.foldenable = true
+o.foldcolumn = "0"
+o.foldtext = ""
+o.foldlevel = 99
+o.foldlevelstart = 99
