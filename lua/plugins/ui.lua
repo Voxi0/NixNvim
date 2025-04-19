@@ -39,9 +39,25 @@ return {
 	{
 		"snacks.nvim",
 		lazy = false,
-		after = require("snacks").setup(),
 		keys = {
-			-- Toggle filetree explorer
+			-- Toggle indentation guides
+			{
+				"<leader>ti",
+				mode = "n",
+				desc = "Toggle indentation guides",
+				function()
+					local indent = require("snacks").indent
+					if indent.enabled then
+						indent.disable()
+						vim.notify("Disabled indent guides", vim.log.levels.INFO)
+					else
+						indent.enable()
+						vim.notify("Enabled indent guides", vim.log.levels.INFO)
+					end
+				end,
+			},
+
+			-- Toggle file explorer
 			{
 				"<leader>e",
 				mode = "n",
@@ -51,7 +67,7 @@ return {
 				end,
 			},
 
-			-- Find projects
+			-- Find projects/files
 			{
 				"<leader>fp",
 				mode = "n",
@@ -60,8 +76,6 @@ return {
 					require("snacks").picker.projects()
 				end,
 			},
-
-			-- Find files
 			{
 				"<leader>ff",
 				mode = "n",
@@ -71,7 +85,7 @@ return {
 				end,
 			},
 
-			-- Toggle LazyGit - Awesome and simple TUI for Git
+			-- Open LazyGit - Awesome TUI for Git
 			{
 				"<leader>gg",
 				mode = "n",
@@ -81,5 +95,21 @@ return {
 				end,
 			},
 		},
+		after = function()
+			require("snacks").setup {
+				input = { enabled = true }, -- Better `vim.ui.input`
+				notifier = { enabled = true }, -- Pretty `vim.notify`
+				indent = { enabled = true }, -- Indentation guides
+				quickfile = { enabled = true }, -- Render file as quickly as possible before loading any plugins when `nvim <some_file>` command run
+				image = { enabled = true }, -- Image viewer - Can display many images and math expressions as well
+
+				-- Handles files larger than configured size - Automatically prevents stuff e.g. LSP from attaching to the buffer
+				bigfile = {
+					enabled = true,
+					notify = true,
+					size = 52428800, -- 50 megabytes
+				},
+			}
+		end,
 	},
 }
