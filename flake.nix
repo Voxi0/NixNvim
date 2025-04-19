@@ -28,7 +28,7 @@
 
       # LSP and runtime depedencies - Made available at runtime for plugins and LSPs
       # Will also be available to PATH in the Neovim terminal
-      lspsAndRuntimeDeps.core = with pkgs; [ fd ripgrep gcc ];
+      lspsAndRuntimeDeps.core = with pkgs; [ fd ripgrep gcc tectonic ghostscript mermaid-cli ];
 
       # Plugins loaded at startup
       startupPlugins = {

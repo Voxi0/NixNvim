@@ -94,12 +94,74 @@ return {
 					require("snacks").lazygit()
 				end,
 			},
+
+			-- LSP
+			{
+				"gd",
+				desc = "Goto Definition",
+				function()
+					Snacks.picker.lsp_definitions()
+				end,
+			},
+			{
+				"gD",
+				desc = "Goto Declaration",
+				function()
+					Snacks.picker.lsp_declarations()
+				end,
+			},
+			{
+				"gr",
+				desc = "References",
+				nowait = true,
+				function()
+					Snacks.picker.lsp_references()
+				end,
+			},
+			{
+				"gI",
+				desc = "Goto Implementation",
+				function()
+					Snacks.picker.lsp_implementations()
+				end,
+			},
+			{
+				"gy",
+				desc = "Goto T[y]pe Definition",
+				function()
+					Snacks.picker.lsp_type_definitions()
+				end,
+			},
+			{
+				"<leader>ss",
+				desc = "LSP Symbols",
+				function()
+					Snacks.picker.lsp_symbols()
+				end,
+			},
+			{
+				"<leader>sS",
+				desc = "LSP Workspace Symbols",
+				function()
+					Snacks.picker.lsp_workspace_symbols()
+				end,
+			},
+
+			-- Miscallaneous
+			{
+				"<leader>uC",
+				desc = "Colorschemes",
+				function()
+					Snacks.picker.colorschemes()
+				end,
+			},
 		},
 		after = function()
 			require("snacks").setup {
-				input = { enabled = true }, -- Better `vim.ui.input`
-				notifier = { enabled = true }, -- Pretty `vim.notify`
+				explorer = { enabled = true }, -- File explorer
+				picker = { enabled = true, focus = "list" }, -- Fuzzy finder
 				indent = { enabled = true }, -- Indentation guides
+				notifier = { enabled = true }, -- Pretty `vim.notify`
 				quickfile = { enabled = true }, -- Render file as quickly as possible before loading any plugins when `nvim <some_file>` command run
 				image = { enabled = true }, -- Image viewer - Can display many images and math expressions as well
 
