@@ -34,20 +34,19 @@
       startupPlugins = {
         # Very useful/handy plugins - Borderline necessary
         core = with pkgs.vimPlugins; [
-          lze lzextras        # Lazy loading library
-          which-key-nvim      # Shows available keybindings in a popup as you type to help you remember them
-          mini-nvim           # Library of 40+ independent Lua modules improving Neovim experience with minimal effort
-          snacks-nvim         # Collection of Quality-of-Life (QoL) plugins for Neovim
-
-          # Treesitter - Syntax highlighting
-          nvim-treesitter.withAllGrammars
+          lze lzextras        						# Lazy loading library
+          which-key-nvim      						# Shows available keybinds in a popup as you type to help you remember them
+          mini-nvim           						# Library of independent Lua modules to improve user experience with minimal effort
+          snacks-nvim        							# Collection of Quality-of-Life plugins
+          nvim-treesitter.withAllGrammars	# Syntax highlighting
+					nvim-ufo												# Code folding
         ];
 
         # Kewl UI plugins
         ui = with pkgs.vimPlugins; [
-          nvim-web-devicons   # Nerd font icons
-          lualine-nvim        # Blazingly fast and easy to configure statusline written in Lua
-          fidget-nvim         # Extensible UI for notifications and LSP progress messages
+          nvim-web-devicons   						# Nerd font icons
+          lualine-nvim        						# Blazingly fast and easy to configure statusline written in Lua
+          fidget-nvim         						# Extensible UI for notifications and LSP progress messages
         ];
 
         # Themes
