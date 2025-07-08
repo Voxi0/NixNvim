@@ -106,6 +106,7 @@
           core = true;
           ui = true;
           themer = true;
+					extras = true;
           colorscheme = "catppuccin";
         };
       };
