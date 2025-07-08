@@ -49,6 +49,11 @@
           fidget-nvim         						# Extensible UI for notifications and LSP progress messages
         ];
 
+				# Extra stuff
+				extras = with pkgs.vimPlugins; [
+					neocord													# Discord rich presence
+				];
+
         # Themes
         themer = with pkgs.vimPlugins; (builtins.getAttr (categories.colorscheme or "catppuccin") {
           "catppuccin" = catppuccin-nvim;
