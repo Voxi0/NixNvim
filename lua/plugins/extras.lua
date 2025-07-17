@@ -2,7 +2,7 @@
 return {
 	-- Discord rich presence
 	{
-		"IogaMaster/neocord",
+		"neocord",
 		lazy = true,
 		after = function()
 			require("neocord").setup({
