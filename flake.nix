@@ -50,7 +50,7 @@
         ];
 
 				# Extra stuff
-				extras = with pkgs.vimPlugins; [
+				fancy = with pkgs.vimPlugins; [
 					neocord													# Discord rich presence
 				];
 
@@ -106,7 +106,7 @@
           core = true;
           ui = true;
           themer = true;
-					extras = true;
+					fancy = true;
           colorscheme = "catppuccin";
         };
       };
