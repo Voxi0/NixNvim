@@ -8,7 +8,12 @@
   };
 
   # Flake outputs/actions - After fetching all depedencies
-  outputs = { self, nixpkgs, nixCats, ... }@inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    nixCats,
+    ...
+  } @ inputs: let
     inherit (nixCats) utils;
     luaPath = "${./.}";
     forEachSystem = utils.eachSystem nixpkgs.lib.platforms.all;
@@ -20,39 +25,48 @@
     # This overlay grabs all the inputs named in the format `plugins-<plugin_name>`
     # Once added to `nixpkgs` we can use `pkgs.vimPlugins` which is a set of our plugins
     # Add any other flake overlays here
-    dependencyOverlays = [ (utils.standardPluginOverlay inputs) ];
+    dependencyOverlays = [(utils.standardPluginOverlay inputs)];
 
     # Categories
-    categoryDefinitions = { pkgs, settings, categories, extra, name, mkPlugin, ... }@packageDef: {
+    categoryDefinitions = {
+      pkgs,
+      settings,
+      categories,
+      extra,
+      name,
+      mkPlugin,
+      ...
+    } @ packageDef: {
       # Define a new category by simply adding a new list here
 
       # LSP and runtime depedencies - Made available at runtime for plugins and LSPs
       # Will also be available to PATH in the Neovim terminal
-      lspsAndRuntimeDeps.core = with pkgs; [ fd ripgrep gcc tectonic ghostscript mermaid-cli ];
+      lspsAndRuntimeDeps.core = with pkgs; [fd ripgrep gcc tectonic ghostscript mermaid-cli];
 
       # Plugins loaded at startup
       startupPlugins = {
         # Very useful/handy plugins - Borderline necessary
         core = with pkgs.vimPlugins; [
-          lze lzextras        						# Lazy loading library
-          which-key-nvim      						# Shows available keybinds in a popup as you type to help you remember them
-          mini-nvim           						# Library of independent Lua modules to improve user experience with minimal effort
-          snacks-nvim        							# Collection of Quality-of-Life plugins
-          nvim-treesitter.withAllGrammars	# Syntax highlighting
-					nvim-ufo												# Code folding
+          lze
+          lzextras # Lazy loading library
+          which-key-nvim # Shows available keybinds in a popup as you type to help you remember them
+          mini-nvim # Library of independent Lua modules to improve user experience with minimal effort
+          snacks-nvim # Collection of Quality-of-Life plugins
+          nvim-treesitter.withAllGrammars # Syntax highlighting
+          nvim-ufo # Code folding
         ];
 
         # Kewl UI plugins
         ui = with pkgs.vimPlugins; [
-          nvim-web-devicons   						# Nerd font icons
-          lualine-nvim        						# Blazingly fast and easy to configure statusline written in Lua
-          fidget-nvim         						# Extensible UI for notifications and LSP progress messages
+          nvim-web-devicons # Nerd font icons
+          lualine-nvim # Blazingly fast and easy to configure statusline written in Lua
+          fidget-nvim # Extensible UI for notifications and LSP progress messages
         ];
 
-				# Extra stuff
-				extras = with pkgs.vimPlugins; [
-					neocord													# Discord rich presence
-				];
+        # Extra stuff
+        extras = with pkgs.vimPlugins; [
+          neocord # Discord rich presence
+        ];
 
         # Themes
         themer = with pkgs.vimPlugins; (builtins.getAttr (categories.colorscheme or "catppuccin") {
@@ -91,13 +105,17 @@
     # Categories to be enabled must be marked `true` but `false` may be omitted
     # This entire set is also passed to nixCats for querying in Lua
     packageDefinitions = {
-      nvim = { pkgs, name, ... }: {
+      nvim = {
+        pkgs,
+        name,
+        ...
+      }: {
         # Settings
         settings = {
           suffix-path = true;
           suffix-LD = true;
           wrapRc = true;
-          aliases = [ "vi" "vim" ];   # Your alias may not conflict with other packages
+          aliases = ["vi" "vim"]; # Your alias may not conflict with other packages
           # neovim-unwrapped = inputs.neovim-nightly-overlay.packages.${pkgs.system}.neovim;
         };
 
@@ -106,7 +124,7 @@
           core = true;
           ui = true;
           themer = true;
-					extras = true;
+          extras = true;
           colorscheme = "catppuccin";
         };
       };
@@ -114,52 +132,75 @@
 
     # Default package definitions entry to use by default
     defaultPackageName = "nvim";
-  in forEachSystem(system: let
+  in
+    forEachSystem (system: let
       # Build nixCats
-      nixCatsBuilder = utils.baseBuilder luaPath {
-        inherit nixpkgs system dependencyOverlays extra_pkg_config;
-      } categoryDefinitions packageDefinitions;
+      nixCatsBuilder =
+        utils.baseBuilder luaPath {
+          inherit nixpkgs system dependencyOverlays extra_pkg_config;
+        }
+        categoryDefinitions
+        packageDefinitions;
       defaultPackage = nixCatsBuilder defaultPackageName;
 
       # Just for using utils such as `pkgs.mkShell`
       # The one used to build Neovim is resolved inside the builder and is also passed to `categoryDefinitions` and `packageDefinitions`
-      pkgs = import nixpkgs { inherit system; };
+      pkgs = import nixpkgs {inherit system;};
     in {
       # Outputs are wrapped with `${system}` by `utils.eachSystem`
       # This makes a package out of each entry in `packageDefinitions` and set the default package to the one passed here
       packages = utils.mkAllWithDefault defaultPackage;
 
       # Choose your package for devShell and add whatever else you desire
+      formatter = pkgs.stylua;
       devShells = {
         default = pkgs.mkShell {
           name = defaultPackageName;
-          packages = [ defaultPackage ];
-          inputsFrom = [ ];
+          packages = [defaultPackage];
+          inputsFrom = [];
           shellHook = ''
           '';
         };
       };
-    }) // {
-    inherit utils;
-    inherit (utils) templates;
+    })
+    // {
+      inherit utils;
+      inherit (utils) templates;
 
-    # Export a NixOS/Home Manager module to allow reconfiguration
-    nixosModules.default = utils.mkNixosModules {
-      moduleNamespace = [ defaultPackageName ];
-      inherit defaultPackageName dependencyOverlays luaPath
-        categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
-    };
-    homeModules.default = utils.mkHomeModules {
-      moduleNamespace = [ defaultPackageName ];
-      inherit defaultPackageName dependencyOverlays luaPath
-        categoryDefinitions packageDefinitions extra_pkg_config nixpkgs;
-    };
+      # Export a NixOS/Home Manager module to allow reconfiguration
+      nixosModules.default = utils.mkNixosModules {
+        moduleNamespace = [defaultPackageName];
+        inherit
+          defaultPackageName
+          dependencyOverlays
+          luaPath
+          categoryDefinitions
+          packageDefinitions
+          extra_pkg_config
+          nixpkgs
+          ;
+      };
+      homeModules.default = utils.mkHomeModules {
+        moduleNamespace = [defaultPackageName];
+        inherit
+          defaultPackageName
+          dependencyOverlays
+          luaPath
+          categoryDefinitions
+          packageDefinitions
+          extra_pkg_config
+          nixpkgs
+          ;
+      };
 
-    # These aren't wrapped with `${system}`
-    # This makes an overlay out of each entry in `packageDefinitions` and sets the default overlay to the one named here
-    overlays = utils.makeOverlays luaPath {
-      inherit nixpkgs dependencyOverlays extra_pkg_config;
-    } categoryDefinitions packageDefinitions defaultPackageName;
-  };
+      # These aren't wrapped with `${system}`
+      # This makes an overlay out of each entry in `packageDefinitions` and sets the default overlay to the one named here
+      overlays =
+        utils.makeOverlays luaPath {
+          inherit nixpkgs dependencyOverlays extra_pkg_config;
+        }
+        categoryDefinitions
+        packageDefinitions
+        defaultPackageName;
+    };
 }
-

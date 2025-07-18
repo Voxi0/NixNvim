@@ -5,7 +5,7 @@ return {
 		"neocord",
 		lazy = true,
 		after = function()
-			require("neocord").setup({
+			require("neocord").setup {
 				-- General options
 				logo = "auto",
 				logo_tooltip = "The One True Editor",
@@ -23,7 +23,7 @@ return {
 				workspace_text = "Working on %s",
 				line_number_text = "Line %s of %s",
 				terminal_text = "Using The Terminal",
-			})
+			}
 		end,
 	},
 }
