@@ -130,6 +130,7 @@
       packages = utils.mkAllWithDefault defaultPackage;
 
       # Choose your package for devShell and add whatever else you desire
+    	formatter = pkgs.stylua;
       devShells = {
         default = pkgs.mkShell {
           name = defaultPackageName;
