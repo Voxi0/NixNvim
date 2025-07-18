@@ -3,6 +3,7 @@ return {
 	-- Discord rich presence
 	{
 		"neocord",
+		lazy = false,
 		after = function()
 			require("neocord").setup {
 				-- General options
