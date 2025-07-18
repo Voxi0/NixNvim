@@ -47,8 +47,8 @@
       startupPlugins = {
         # Very useful/handy plugins - Borderline necessary
         core = with pkgs.vimPlugins; [
-          lze
-          lzextras # Lazy loading library
+          lze	# Lazy loading library
+          lzextras
           which-key-nvim # Shows available keybinds in a popup as you type to help you remember them
           mini-nvim # Library of independent Lua modules to improve user experience with minimal effort
           snacks-nvim # Collection of Quality-of-Life plugins
@@ -151,7 +151,7 @@
       # This makes a package out of each entry in `packageDefinitions` and set the default package to the one passed here
       packages = utils.mkAllWithDefault defaultPackage;
 
-      # Choose your package for devShell and add whatever else you desire
+      # Formatter and development shells
       formatter = pkgs.stylua;
       devShells = {
         default = pkgs.mkShell {
