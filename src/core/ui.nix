@@ -18,7 +18,6 @@ _: {
     # UI
     ui = {
       noice.enable = true;
-      modes-nvim.enable = true;
       breadcrumbs.enable = true;
       colorizer.enable = true;
       fastaction.enable = true;

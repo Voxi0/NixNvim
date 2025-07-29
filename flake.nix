@@ -19,6 +19,7 @@
       buildInputs = with pkgs; [statix deadnix];
     };
 
+    # Export NVF configuration as a package
     packages.${system}.default =
       (inputs.nvf.lib.neovimConfiguration {
         inherit pkgs;
