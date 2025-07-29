@@ -17,7 +17,7 @@
     packages.${system}.default =
       (inputs.nvf.lib.neovimConfiguration {
         inherit pkgs;
-        modules = [./config.nix];
+        modules = [./src];
       }).neovim;
   };
 }

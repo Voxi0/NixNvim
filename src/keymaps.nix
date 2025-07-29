@@ -1,0 +1,28 @@
+_: {
+	vim = {
+		# Keymaps
+		keymaps = [
+			{
+				key = "<leader>e";
+				mode = "n";
+				silent = true;
+				action = "<CMD>Neotree toggle<CR>";
+			}
+		];
+
+		# Autocommands
+    autocmds = [
+      # Disable auto comment on enter
+      {
+        enable = true;
+        desc = "Disable auto comment on enter";
+        event = ["FileType"];
+        callback = lib.mkLuaInline ''
+          function()
+          	vim.opt.formatoptions:remove { "c", "r", "o" }
+          end
+        '';
+      }
+    ];
+	};
+}
