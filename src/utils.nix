@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   vim = {
     # Git integration
     git = {
@@ -6,13 +6,19 @@ _: {
       gitsigns.enable = true;
     };
 
-    # Super fast and efficient fuzzy finder
-    fzf-lua = {
+    # Fuzzy finder
+    telescope = {
       enable = true;
-      profile = "telescope";
+      extensions = [
+        {
+          name = "fzf";
+          packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
+          setup = {fzf = {fuzzy = true;};};
+        }
+      ];
     };
 
-    # Mini
+    # Mini.nvim
     mini.sessions.enable = true;
 
     # TODO comments
@@ -29,12 +35,6 @@ _: {
       # Color and icon picker
       ccc.enable = true;
       icon-picker.enable = true;
-
-      # Markdown preview
-      preview.glow.enable = true;
-
-      # Nix
-      nix-develop.enable = true;
     };
   };
 }
