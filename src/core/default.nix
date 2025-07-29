@@ -1,19 +1,26 @@
 _: {
-	# Import Nix modules
-	imports = [
-		./autocmds.nix
-	];
+  # Import Nix modules
+  imports = [
+    ./keymaps.nix
+    ./autocmds.nix
+    ./lsp.nix
+    ./languages.nix
+    ./debugging.nix
+    ./ui.nix
+    ./filetree.nix
+  ];
 
-	vim = {
-		# Experimental Lua module loader to speed up the start up process
+  # Core Neovim config
+  vim = {
+    # Experimental Lua module loader to speed up the start up process
     enableLuaLoader = true;
 
     # General
-    globals.maplocalleader = " ";
     lineNumberMode = "relNumber";
     spellcheck.enable = true;
     options = {
       updatetime = 200;
+      clipboard = "unnamedplus";
 
       # Indentation
       autoindent = false;
@@ -23,5 +30,5 @@ _: {
       # Word wrapping
       wrap = false;
     };
-	};
+  };
 }
