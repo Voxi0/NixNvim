@@ -1,53 +1,66 @@
 {lib, ...}: {
-	# Import Nix modules
-	imports = [
-		./looks.nix
-		./keymaps.nix
-	];
+  # Import Nix modules
+  imports = [
+		./core
+    ./looks.nix
+    ./filetree.nix
+		./debugging.nix
+  ];
 
   vim = {
-    # Experimental Lua module loader to speed up the start up process
-    enableLuaLoader = true;
+    # Utilities
+    utility = {
+      # Color and icon picker
+      ccc.enable = true;
+      icon-picker.enable = true;
 
-		# Globals
-		globals.maplocalleader = " ";
+      # Markdown preview
+      preview.glow.enable = true;
 
-    # Debugging
-    diagnostics.enable = true;
-    debugger.nvim-dap = {
-      enable = true;
-      ui.enable = true;
+      # Nix
+      nix-develop.enable = true;
     };
 
     # Useful
     clipboard.enable = true;
-		git = {
-			enable = true;
-			gitsigns.enable = true;
-		};
-    lsp.enable = true;
-    filetree.neo-tree.enable = true;
+    syntaxHighlighting = true;
+    treesitter = {
+      enable = true;
+      addDefaultGrammars = true;
+      autotagHtml = true;
+    };
+    lsp = {
+      enable = true;
+      formatOnSave = true;
+      lightbulb.enable = true;
+      lspconfig.enable = true;
+      lspkind.enable = true;
+      trouble.enable = true;
+    };
+    git = {
+      enable = true;
+      gitsigns.enable = true;
+    };
     fzf-lua = {
       enable = true;
       profile = "telescope";
     };
 
+    # Mini
+    mini = {
+      icons.enable = true;
+      indentscope.enable = true;
+      sessions.enable = true;
+    };
+
     # Autocompletion and formatter
+    snippets.luasnip.enable = true;
     autocomplete.blink-cmp = {
       enable = true;
       friendly-snippets.enable = true;
       mappings = {
         confirm = "<Tab>";
         next = "<Shift> + <Tab>";
-      };
-    };
-    formatter.conform-nvim = {
-      enable = true;
-      setupOpts = {
-        formatters_by_ft = {
-          nix = ["alejandra"];
-          lua = ["stylua"];
-        };
       };
     };
 
@@ -58,7 +71,21 @@
     };
     languages = {
       enableTreesitter = true;
+      enableFormat = true;
+
       nix.enable = true;
+      zig.enable = true;
+    };
+
+    # Discord rich presence
+    presence.neocord = {
+      enable = true;
+      setupOpts.global_timer = true;
+    };
+
+    # Obsidian and TODO comments
+    notes = {
+      todo-comments.enable = true;
     };
   };
 }

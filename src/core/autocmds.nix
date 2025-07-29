@@ -1,16 +1,9 @@
-_: {
-	vim = {
-		# Keymaps
-		keymaps = [
-			{
-				key = "<leader>e";
-				mode = "n";
-				silent = true;
-				action = "<CMD>Neotree toggle<CR>";
-			}
-		];
+{lib, ...}: {
+  vim = {
+    # Keymaps
+    keymaps = [];
 
-		# Autocommands
+    # Autocommands
     autocmds = [
       # Disable auto comment on enter
       {
@@ -24,5 +17,5 @@ _: {
         '';
       }
     ];
-	};
+  };
 }
