@@ -13,7 +13,12 @@
     system = "x86_64-linux";
     pkgs = inputs.nixpkgs.legacyPackages.${system};
   in {
+    # Formatter and devshell
     formatter.${system} = pkgs.alejandra;
+    devShells.${system}.default = pkgs.mkShellNoCC {
+      buildInputs = with pkgs; [statix deadnix];
+    };
+
     packages.${system}.default =
       (inputs.nvf.lib.neovimConfiguration {
         inherit pkgs;
