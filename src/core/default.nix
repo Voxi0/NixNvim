@@ -3,9 +3,16 @@ _: {
   imports = [
     ./keymaps.nix
     ./autocmds.nix
-    ./lsp.nix
+
+    # Language support with LSPs, snippets, syntax highlighting etc
     ./languages.nix
+    ./lsp.nix
+    ./autocompletion.nix
+
+    # Debugging
     ./debugging.nix
+
+    # Handy UI stuff
     ./ui.nix
     ./filetree.nix
   ];
