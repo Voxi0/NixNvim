@@ -19,7 +19,11 @@
     };
 
     # Mini.nvim
-    mini.sessions.enable = true;
+    mini = {
+      pairs.enable = true;
+      surround.enable = true;
+      sessions.enable = true;
+    };
 
     # TODO comments
     notes.todo-comments.enable = true;
