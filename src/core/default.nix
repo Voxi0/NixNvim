@@ -14,7 +14,6 @@ _: {
 
     # Handy UI stuff
     ./ui.nix
-    ./filetree.nix
   ];
 
   # Core Neovim config

@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+_: {
+  # Import Nix modules
+  imports = [
+    ./snacks.nix # Snacks-nvim
+  ];
   vim = {
     # Git integration
     git = {
@@ -7,16 +11,20 @@
     };
 
     # Fuzzy finder
-    telescope = {
-      enable = true;
-      extensions = [
-        {
-          name = "fzf";
-          packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
-          setup = {fzf = {fuzzy = true;};};
-        }
-      ];
-    };
+    # telescope = {
+    #   enable = true;
+    #   extensions = [
+    #     {
+    #       name = "fzf";
+    #       packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
+    #       setup = {fzf = {fuzzy = true;};};
+    #     }
+    #   ];
+    # };
+    # fzf-lua = {
+    #   enable = true;
+    #   profile = "telescope";
+    # };
 
     # Mini.nvim
     mini = {

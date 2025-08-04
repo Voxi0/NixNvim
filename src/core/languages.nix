@@ -1,7 +1,6 @@
 _: {
   vim = {
     # Syntax highlighting
-    syntaxHighlighting = true;
     treesitter = {
       enable = true;
       addDefaultGrammars = true;

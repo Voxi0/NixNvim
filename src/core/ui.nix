@@ -10,9 +10,6 @@ _: {
       style = "mocha";
     };
 
-    # Dashboard/Greeter
-    dashboard.alpha.enable = true;
-
     # Statusline
     statusline.lualine.enable = true;
 
@@ -42,9 +39,6 @@ _: {
     visuals = {
       # Icons
       nvim-web-devicons.enable = true;
-
-      # Indentation guides
-      indent-blankline.enable = true;
 
       # Extensible UI for Neovim notifications and LSP progress messages
       fidget-nvim.enable = true;
