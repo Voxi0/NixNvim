@@ -12,22 +12,6 @@ _: {
       gitsigns.enable = true;
     };
 
-    # Fuzzy finder
-    # telescope = {
-    #   enable = true;
-    #   extensions = [
-    #     {
-    #       name = "fzf";
-    #       packages = [pkgs.vimPlugins.telescope-fzf-native-nvim];
-    #       setup = {fzf = {fuzzy = true;};};
-    #     }
-    #   ];
-    # };
-    # fzf-lua = {
-    #   enable = true;
-    #   profile = "telescope";
-    # };
-
     # TODO comments
     notes.todo-comments.enable = true;
 
