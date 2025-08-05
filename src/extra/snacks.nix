@@ -1,5 +1,12 @@
 _: {
   vim = {
+    # Disable Neovim file explorer (Netrw) to use Snacks.nvim file explorer instead
+    options = {
+      loaded_netrw = 1;
+      loaded_netrwPlugin = 1;
+    };
+
+    # Snacks.nvim
     utility.snacks-nvim = {
       enable = true;
       setupOpts = {
@@ -20,60 +27,56 @@ _: {
         };
       };
     };
+
+    # Key bindings
     keymaps = [
       # File explorer
       {
         desc = "Toggle file explorer";
+        mode = "n";
         key = "<leader>e";
         lua = true;
         action = "Snacks.picker.explorer";
-        mode = "n";
-        silent = true;
       }
 
       # LazyGit
       {
         desc = "Toggle LazyGit";
+        mode = "n";
         key = "<leader>gg";
         lua = true;
         action = "Snacks.lazygit.open";
-        mode = "n";
-        silent = true;
       }
 
       # Fuzzy find
       {
         desc = "Fuzzy-find files";
+        mode = "n";
         key = "<leader>ff";
         lua = true;
         action = "function() Snacks.picker.files ({focus = 'list'}) end";
-        mode = "n";
-        silent = true;
       }
       {
         desc = "Fuzzy-find all files";
+        mode = "n";
         key = "<leader>fs";
         lua = true;
         action = "function() Snacks.picker.smart({focus = 'list'}) end";
-        mode = "n";
-        silent = true;
       }
       {
         desc = "Fuzzy-find open file buffers";
+        mode = "n";
         key = "<leader>fb";
         lua = true;
         action = "function() Snacks.picker.buffers({focus = 'list'}) end";
-        mode = "n";
-        silent = true;
       }
 
       # Toggle indentation guides
       {
         desc = "Toggle indentation guides";
+        mode = "n";
         key = "<leader>ig";
         lua = true;
-        mode = "n";
-        silent = true;
         action = "
           function()
             if Snacks.indent.enabled then
