@@ -30,7 +30,10 @@ _: {
     mini = {
       pairs.enable = true;
       surround.enable = true;
-      sessions.enable = true;
+      sessions = {
+        enable = true;
+        setupOpts.autoread = true;
+      };
     };
 
     # TODO comments

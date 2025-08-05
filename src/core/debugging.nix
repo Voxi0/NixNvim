@@ -3,7 +3,10 @@ _: {
   ### DEBUGGING ###
   #################
   vim = {
-    diagnostics.enable = true;
+    diagnostics = {
+      enable = true;
+      nvim-lint.enable = true;
+    };
     debugger.nvim-dap = {
       enable = true;
       ui.enable = true;

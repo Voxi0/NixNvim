@@ -25,16 +25,53 @@ _: {
     lineNumberMode = "relNumber";
     spellcheck.enable = true;
     options = {
-      updatetime = 200;
-      clipboard = "unnamedplus";
-
       # Indentation
       autoindent = false;
+      smartindent = false;
+      expandtab = true;
       shiftwidth = 2;
       tabstop = 2;
+      softtabstop = 2;
 
-      # Word wrapping
+      # Stop auto folding code
+      foldlevel = 99;
+
+      # Highlight the line that the cursor is on
+      cursorline = true;
+
+      # Lines/Columns to keep above/below and left/right cursor
+      scrolloff = 10;
+      sidescrolloff = 8;
+
+      # Split behaviour
+      splitbelow = true;
+      splitright = true;
+
+      # Search settings
+      ignorecase = true;
+      smartcase = true;
+      hlsearch = true;
+      incsearch = true;
+
+      # File handling
+      backup = false;
+      writebackup = false;
+      undofile = true;
+      swapfile = false;
+      autoread = true;
+      autowrite = false;
+
+      # Miscellaneous
       wrap = false;
+      clipboard = "unnamedplus";
+      mouse = "a";
+      encoding = "UTF-8";
+
+      # Performance
+      updatetime = 200;
+      lazyredraw = true;
+      redrawtime = 10000;
+      maxmempattern = 20000;
     };
   };
 }

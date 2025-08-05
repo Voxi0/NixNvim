@@ -22,3 +22,7 @@ Work-In-Progress
 Please do add new Github issues if you have any problems, I will look into them as soon as I can although I cannot make any guarantees.
 
 Pull requests are welcome but for any major changes, please open an issue first to discuss what changes you desire.
+
+## Acknowledgements
+- **[radleylewis/nvim-lite](https://github.com/radleylewis/nvim-lite)** - For showing lots of handy autocommands/keybinds and how to do cool stuff
+    without plugins and in a very minimal way.

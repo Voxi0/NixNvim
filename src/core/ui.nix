@@ -1,13 +1,13 @@
-_: {
+{pkgs, ...}: {
   ##################
   ### APPEARANCE ###
   ##################
   vim = {
-    # Colorscheme
+    # Theme
     theme = {
       enable = true;
-      name = "catppuccin";
-      style = "mocha";
+      name = "rose-pine";
+      style = "main";
     };
 
     # Statusline
@@ -15,9 +15,6 @@ _: {
 
     # Fancy and configurable notification manager
     notify.nvim-notify.enable = true;
-
-    # Shows open file buffers
-    tabline.nvimBufferline.enable = true;
 
     # UI
     ui = {
@@ -43,11 +40,16 @@ _: {
       # Extensible UI for Neovim notifications and LSP progress messages
       fidget-nvim.enable = true;
 
-      # Execute cellular automaton animations based on the content of neovim buffer
-      cellular-automaton.enable = true;
-
       # Smooth-scrolling for all commands
       cinnamon-nvim.enable = true;
+    };
+
+    # Extra plugins
+    extraPlugins = with pkgs.vimPlugins; {
+      bufferline = {
+        package = bufferline-nvim;
+        setup = "require('bufferline').setup {}";
+      };
     };
   };
 }
