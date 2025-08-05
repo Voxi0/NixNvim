@@ -1,11 +1,5 @@
 _: {
   vim = {
-    # Disable Neovim file explorer (Netrw) to use Snacks.nvim file explorer instead
-    options = {
-      loaded_netrw = 1;
-      loaded_netrwPlugin = 1;
-    };
-
     # Snacks.nvim
     utility.snacks-nvim = {
       enable = true;
@@ -85,7 +79,7 @@ _: {
               Snacks.indent.enable()
             end
           end
-        ";
+          ";
       }
     ];
   };

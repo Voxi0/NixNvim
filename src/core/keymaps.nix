@@ -7,7 +7,10 @@ _: {
     };
 
     # Show available key bindings as you type
-    binds.whichKey.enable = true;
+    binds.whichKey = {
+      enable = true;
+      setupOpts.preset = "helix";
+    };
 
     # Keymaps
     keymaps = [
