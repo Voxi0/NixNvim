@@ -69,7 +69,6 @@ _: {
 
       # Performance
       updatetime = 200;
-      lazyredraw = true;
       redrawtime = 10000;
       maxmempattern = 20000;
     };

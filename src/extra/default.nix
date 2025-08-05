@@ -1,7 +1,9 @@
 _: {
   # Import Nix modules
   imports = [
-    ./snacks.nix # Snacks-nvim
+    # Quality of life plugin collections
+    ./snacks.nix # Snacks.nvim
+    ./mini.nix # Mini.nvim
   ];
   vim = {
     # Git integration
@@ -25,16 +27,6 @@ _: {
     #   enable = true;
     #   profile = "telescope";
     # };
-
-    # Mini.nvim
-    mini = {
-      pairs.enable = true;
-      surround.enable = true;
-      sessions = {
-        enable = true;
-        setupOpts.autoread = true;
-      };
-    };
 
     # TODO comments
     notes.todo-comments.enable = true;
