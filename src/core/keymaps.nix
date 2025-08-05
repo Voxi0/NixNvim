@@ -14,6 +14,20 @@ _: {
 
     # Keymaps
     keymaps = [
+      # Line numbers
+      {
+        desc = "Toggle line numbers";
+        mode = ["n"];
+        key = "<leader>n";
+        action = "<CMD>set number!<CR>";
+      }
+      {
+        desc = "Toggle relative line numbers";
+        mode = ["n"];
+        key = "<leader>rn";
+        action = "<CMD>set relativenumber!<CR>";
+      }
+
       # Delete without yanking/copying
       {
         desc = "Delete";

@@ -46,6 +46,7 @@
 
     # Extra plugins
     extraPlugins = with pkgs.vimPlugins; {
+      # Shows open file buffers
       bufferline = {
         package = bufferline-nvim;
         setup = ''

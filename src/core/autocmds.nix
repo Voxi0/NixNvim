@@ -32,7 +32,7 @@
         event = ["TextYankPost"];
         callback = lib.mkLuaInline ''
           function()
-            vim.highlight.on_yank()
+            vim.hl.on_yank()
           end
         '';
       }

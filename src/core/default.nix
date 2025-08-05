@@ -1,4 +1,4 @@
-_: {
+{pkgs, ...}: {
   # Import Nix modules
   imports = [
     ./keymaps.nix
@@ -18,6 +18,9 @@ _: {
 
   # Core Neovim config
   vim = {
+    # Extra packages
+    extraPackages = with pkgs; [gcc fd ripgrep ghostscript tectonic mermaid-cli];
+
     # Experimental Lua module loader to speed up the start up process
     enableLuaLoader = true;
 
