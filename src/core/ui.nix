@@ -48,7 +48,18 @@
     extraPlugins = with pkgs.vimPlugins; {
       bufferline = {
         package = bufferline-nvim;
-        setup = "require('bufferline').setup {}";
+        setup = ''
+          require('bufferline').setup ({
+            options = {
+              always_show_bufferline = true,
+              sort_by = "insert_after_current",
+              separator_style = "thin",
+              diagnostics = "nvim_lsp",
+              indicator = { style = "none" },
+              show_close_icon = false,
+            },
+          })
+        '';
       };
     };
   };
