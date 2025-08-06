@@ -26,6 +26,9 @@ _: {
       # Color and icon picker
       ccc.enable = true;
       icon-picker.enable = true;
+
+      # Automatic time tracking and metrics generated from your programming activity
+      vim-wakatime.enable = true;
     };
   };
 }
