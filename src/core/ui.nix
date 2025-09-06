@@ -45,23 +45,6 @@
     };
 
     # Extra plugins
-    extraPlugins = with pkgs.vimPlugins; {
-      # Shows open file buffers
-      bufferline = {
-        package = bufferline-nvim;
-        setup = ''
-          require('bufferline').setup ({
-            options = {
-              always_show_bufferline = true,
-              sort_by = "insert_after_current",
-              separator_style = "thin",
-              diagnostics = "nvim_lsp",
-              indicator = { style = "none" },
-              show_close_icon = false,
-            },
-          })
-        '';
-      };
-    };
+    extraPlugins = {};
   };
 }
